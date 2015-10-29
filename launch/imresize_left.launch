@@ -1,0 +1,17 @@
+<?xml version="1" encoding="utf-8"?>
+<launch>
+<node pkg="nodelet" type="nodelet"
+      args="standalone image_proc/crop_decimate"
+      name="my_decimator_left">
+  <param name="decimation_x" type="int" value="2" />
+  <param name="decimation_y" type="int" value="2" />
+
+  <!-- remap input topics -->
+  <remap from="camera/image_raw" to="/stereo_org/left/image_raw"/>
+  <remap from="camera/image_info" to="/stereo_org/left/camera_info"/>
+
+  <!-- remap output topics -->
+  <remap from="camera_out/image_raw" to="/stereo/left/image_raw"/>
+  <remap from="camera_out/image_info" to="/stereo/left/camera_info"/>
+</node>
+</launch>
